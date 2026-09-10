@@ -1,1 +1,858 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>THE LEGENDS | Universo de Héroes</title>
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #05060b;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* =========================
+   FONDO
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,110,255,.18), transparent 30%),
+        radial-gradient(circle at 80% 30%, rgba(130,0,255,.15), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(0,200,255,.10), transparent 30%);
+    pointer-events: none;
+    z-index: -2;
+}
+
+.stars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: .6;
+    background-image:
+        radial-gradient(white 1px, transparent 1px),
+        radial-gradient(white 1px, transparent 1px);
+    background-size: 90px 90px, 140px 140px;
+    background-position: 0 0, 40px 70px;
+    animation: starsMove 20s linear infinite;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(90px);
+    }
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(3,4,9,.65);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 4px;
+}
+
+.logo span {
+    color: #36a9ff;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: white;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 20px 60px;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 1000px;
+}
+
+.small-title {
+    color: #48b8ff;
+    letter-spacing: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    animation: fadeDown 1s ease;
+}
+
+.hero h1 {
+    font-size: clamp(70px, 13vw, 180px);
+    line-height: .8;
+    font-weight: 1000;
+    letter-spacing: -7px;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #8edaff 45%,
+        #147cff 100%
+    );
+
+    -webkit-background-clip: text;
+    color: transparent;
+
+    text-shadow: 0 0 60px rgba(0,140,255,.35);
+
+    animation: titleAppear 1.3s ease;
+}
+
+.hero h2 {
+    margin-top: 35px;
+    font-size: clamp(18px, 3vw, 30px);
+    color: #ddd;
+    letter-spacing: 5px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 25px auto;
+    color: #999;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.buttons {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+    border: 1px solid #278cff;
+}
+
+.btn-primary {
+    background: #1677ff;
+    color: white;
+    box-shadow: 0 0 30px rgba(0,120,255,.35);
+}
+
+.btn-primary:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 0 45px rgba(0,150,255,.7);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,.04);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,.12);
+    transform: translateY(-4px);
+}
+
+@keyframes titleAppear {
+    from {
+        opacity: 0;
+        transform: scale(.8);
+        filter: blur(15px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   SECCIONES
+========================= */
+
+section {
+    padding: 100px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title small {
+    color: #2998ff;
+    letter-spacing: 4px;
+}
+
+.section-title h2 {
+    font-size: clamp(35px, 5vw, 65px);
+    margin-top: 10px;
+}
+
+.section-title p {
+    color: #888;
+    margin-top: 15px;
+}
+
+/* =========================
+   HEROES
+========================= */
+
+.hero-grid {
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+
+.card {
+    min-height: 340px;
+    border-radius: 18px;
+    padding: 25px;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+    border: 1px solid rgba(255,255,255,.1);
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    border-color: #2c9cff;
+    box-shadow: 0 20px 60px rgba(0,100,255,.2);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: rgba(0,140,255,.15);
+    filter: blur(40px);
+    right: -50px;
+    top: -50px;
+}
+
+.card-number {
+    color: #555;
+    font-size: 14px;
+}
+
+.card h3 {
+    margin-top: 120px;
+    font-size: 28px;
+}
+
+.card p {
+    color: #999;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.card .power {
+    color: #36a9ff;
+    font-size: 12px;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+
+/* =========================
+   HISTORIAS
+========================= */
+
+.story {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.story-box {
+    padding: 45px;
+    border-radius: 20px;
+    background: linear-gradient(
+        135deg,
+        rgba(20,30,60,.7),
+        rgba(10,10,20,.8)
+    );
+    border: 1px solid rgba(255,255,255,.08);
+    transition: .3s;
+}
+
+.story-box:hover {
+    transform: scale(1.02);
+    border-color: rgba(50,160,255,.5);
+}
+
+.story-box h3 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.story-box p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+/* =========================
+   JUEGOS
+========================= */
+
+.games {
+    text-align: center;
+}
+
+.game-box {
+    max-width: 900px;
+    margin: auto;
+    padding: 70px 30px;
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(10,80,180,.25),
+            rgba(90,20,180,.2),
+            rgba(0,0,0,.6)
+        );
+
+    border: 1px solid rgba(70,150,255,.3);
+    box-shadow: 0 0 80px rgba(0,80,255,.1);
+}
+
+.game-box h3 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.game-box p {
+    color: #aaa;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+/* =========================
+   FRASE
+========================= */
+
+.quote {
+    text-align: center;
+    padding: 130px 20px;
+}
+
+.quote h2 {
+    max-width: 900px;
+    margin: auto;
+    font-size: clamp(30px, 5vw, 65px);
+    line-height: 1.1;
+}
+
+.quote span {
+    color: #299cff;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 50px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: #666;
+}
+
+footer strong {
+    color: white;
+}
+
+footer .brand {
+    margin-top: 10px;
+    color: #299cff;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:900px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .hero-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .story {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    section {
+        padding: 80px 20px;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        letter-spacing: -3px;
+    }
+
+    .game-box h3 {
+        font-size: 38px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        THE<span>LEGENDS</span>
+    </div>
+
+    <ul>
+        <li><a href="#universo">Universo</a></li>
+        <li><a href="#heroes">Héroes</a></li>
+        <li><a href="#historias">Historias</a></li>
+        <li><a href="#juegos">Juegos</a></li>
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     PORTADA
+========================= -->
+
+<header class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            UN NUEVO UNIVERSO ESTÁ NACIENDO
+        </div>
+
+        <h1>
+            THE<br>LEGENDS
+        </h1>
+
+        <h2>
+            HISTORIAS • HÉROES • LEYENDAS
+        </h2>
+
+        <p>
+            Un universo de historias originales donde cada héroe
+            tiene un pasado, cada decisión tiene consecuencias
+            y cada leyenda puede cambiarlo todo.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#heroes" class="btn btn-primary">
+                DESCUBRIR HÉROES
+            </a>
+
+            <a href="#historias" class="btn btn-secondary">
+                EXPLORAR HISTORIAS
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     UNIVERSO
+========================= -->
+
+<section id="universo">
+
+    <div class="section-title">
+
+        <small>EL UNIVERSO</small>
+
+        <h2>Todo está conectado.</h2>
+
+        <p>
+            Historias diferentes. Héroes diferentes.
+            Un mismo universo.
+        </p>
+
+    </div>
+
+    <div class="story">
+
+        <div class="story-box">
+
+            <h3>🌌 Un universo.</h3>
+
+            <p>
+                The Legends reúne historias de ciencia ficción,
+                acción, misterio, fantasía y superhéroes.
+                Personajes que comienzan solos pueden terminar
+                formando parte de algo mucho más grande.
+            </p>
+
+        </div>
+
+        <div class="story-box">
+
+            <h3>⚡ Una leyenda.</h3>
+
+            <p>
+                Cada personaje tiene sus propias decisiones,
+                enemigos, poderes y consecuencias.
+                No todas las historias terminan de la misma manera.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HEROES
+========================= -->
+
+<section id="heroes">
+
+    <div class="section-title">
+
+        <small>LOS LEGENDS</small>
+
+        <h2>Conocé a los héroes.</h2>
+
+        <p>
+            Algunos todavía no saben lo que son capaces de hacer.
+        </p>
+
+    </div>
+
+
+    <div class="hero-grid">
+
+        <div class="card">
+
+            <div class="card-number">
+                001
+            </div>
+
+            <h3>MANTYX</h3>
+
+            <p>
+                Un experimento que jamás debió existir.
+            </p>
+
+            <div class="power">
+                EVOLUCIÓN ADAPTATIVA
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                002
+            </div>
+
+            <h3>VOLT</h3>
+
+            <p>
+                El poder puede ser tan peligroso
+                como el enemigo.
+            </p>
+
+            <div class="power">
+                ENERGÍA
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                003
+            </div>
+
+            <h3>AQUARIS</h3>
+
+            <p>
+                El océano puede salvarte...
+                o convertirse en tu peor enemigo.
+            </p>
+
+            <div class="power">
+                CONTROL DEL AGUA
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-number">
+                004
+            </div>
+
+            <h3>NEXUS</h3>
+
+            <p>
+                Un héroe conectado con fuerzas
+                que nadie comprende.
+            </p>
+
+            <div class="power">
+                PORTALES
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HISTORIAS
+========================= -->
+
+<section id="historias">
+
+    <div class="section-title">
+
+        <small>THE LEGENDS STORIES</small>
+
+        <h2>Las historias comienzan aquí.</h2>
+
+        <p>
+            Descubrí mundos, personajes y secretos.
+        </p>
+
+    </div>
+
+
+    <div class="story">
+
+        <div class="story-box">
+
+            <h3>🦗 MANTYX</h3>
+
+            <p>
+                Max Rojas descubre que su pasado está relacionado
+                con un proyecto secreto. Algo dentro de él está
+                cambiando y cada nueva adaptación tiene un precio.
+            </p>
+
+            <br>
+
+            <a href="#" class="btn btn-secondary">
+                PRÓXIMAMENTE
+            </a>
+
+        </div>
+
+
+        <div class="story-box">
+
+            <h3>⚡ VOLT</h3>
+
+            <p>
+                Lucas Ferrer obtiene un poder capaz de liberar
+                enormes cantidades de energía. Pero cuanto más
+                utiliza su poder, más difícil resulta controlarlo.
+            </p>
+
+            <br>
+
+            <a href="#" class="btn btn-secondary">
+                PRÓXIMAMENTE
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JUEGOS
+========================= -->
+
+<section id="juegos" class="games">
+
+    <div class="section-title">
+
+        <small>THE LEGENDS GAMES</small>
+
+        <h2>Las decisiones importan.</h2>
+
+    </div>
+
+
+    <div class="game-box">
+
+        <h3>THE LEGENDS</h3>
+
+        <p>
+            Un videojuego de decisiones donde vos decidís
+            qué camino toma cada héroe.
+
+            <br><br>
+
+            Tus decisiones pueden cambiar alianzas,
+            enemigos, batallas y finales.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#" class="btn btn-primary">
+                JUGAR PRÓXIMAMENTE
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FRASE FINAL
+========================= -->
+
+<section class="quote">
+
+    <h2>
+        "No todos nacen para ser héroes.
+        Algunos se convierten en <span>leyendas.</span>"
+    </h2>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <strong>THE LEGENDS</strong>
+
+    <p>
+        Un universo creado para contar historias.
+    </p>
+
+    <div class="brand">
+        ArgenTech • Elias Becerra
+    </div>
+
+    <br>
+
+    © 2026 THE LEGENDS
+
+</footer>
+
+
+</body>
+</html>
